@@ -1,0 +1,80 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+% Essential
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage{titling}
+
+% Optional
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[official]{eurosym}
+\usepackage{xcolor}
+
+% Titleplage
+\title{Title}
+\date{\today}
+\author{Jonas Devlieghere}
+ 
+% Margins
+\setlength{\topmargin}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{8.5in}
+ 
+% Fancy Header 
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[L]{\thetitle}
+\fancyhead[R]{\thedate}
+\fancyfoot{}
+\fancyfoot[L]{\theauthor}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Listings 
+\lstset{
+	basicstyle=\scriptsize,
+	breaklines=true,
+	extendedchars=true,
+	frame=lines,
+	numbers=left,
+	numberstyle=\tiny,
+	keywordstyle=\bfseries,
+	showstringspaces=false,
+	tabsize=2,
+	title=\lstname 
+}
+
+% Personal Preferences
+\setlength\parindent{0pt}
+
+\begin{document}
+% Title Page
+\maketitle
+\newpage
+
+% Table of Contents Page
+\tableofcontents
+\newpage
+
+% Start of Document
+
+% Appendix
+\appendix 
+
+% References
+\bibliographystyle{plain}
+\bibliography{references}
+\nocite{*}
+
+\end{document}
+
