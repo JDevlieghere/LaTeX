@@ -1,0 +1,71 @@
+% Theme
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[frame number]
+
+% Colors
+\definecolor{fgcolor}{RGB}{241,241,241}
+\definecolor{fgcolor2}{RGB}{180,180,180}
+\definecolor{bgcolor}{RGB}{38,38,38}
+\definecolor{block}{RGB}{28,28,28}
+\definecolor{title}{RGB}{38,168,220}
+\definecolor{subtitle}{RGB}{226,62,93}
+
+% Beamer Colors
+\setbeamercolor{structure}{fg=fgcolor}
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{normal text}{fg=fgcolor,bg=bgcolor}
+
+\setbeamercolor{item}{fg=fgcolor}
+\setbeamercolor{subitem}{fg=fgcolor2}
+\setbeamercolor{itemize/enumerate subbody}{fg=fgcolor2}
+
+\setbeamercolor{section in toc}{fg=fgcolor}
+\setbeamercolor{subsection in toc}{fg=fgcolor}
+\setbeamercolor{section in toc shaded}{fg=fgcolor2}
+\setbeamercolor{subsection in toc shaded}{fg=fgcolor2}
+\setbeamercolor{block title}{fg=subtitle}
+
+% Beamer Font
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+% Beamer Template
+% http://tex.stackexchange.com/questions/69720/latex-beamer-toc-dont-display-bubbles
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamertemplate{subsection in toc}{\hspace{1.2em}{\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+
+% Table of Contents 
+\AtBeginSection[]
+{
+\begin{frame}
+ 	\frametitle{Overzicht}
+ 	%\begin{multicols}{2}
+	\tableofcontents[currentsection]	
+	%\end{multicols}
+\end{frame}
+}
+
+% Automatic Frame Titles
+% http://tex.stackexchange.com/questions/109816/automatic-frame-titles-subtitles-with-condition
+\CheckCommand*\beamer@checkframetitle{%
+  \@ifnextchar\bgroup\beamer@inlineframetitle{}}
+\renewcommand*\beamer@checkframetitle{%
+  \global\let\beamer@frametitle\relax\@ifnextchar%
+  \bgroup\beamer@inlineframetitle{}}
+
+\addtobeamertemplate{frametitle}{
+  \ifx\insertframetitle\empty
+    \ifx\insertframesubtitle\empty
+      \ifx\insertsubsection\empty 
+        \frametitle{\insertsectionhead}
+      \else
+        \frametitle{\insertsubsectionhead}\framesubtitle{\insertsectionhead}
+      \fi  
+    \else     
+    \fi  
+    \else
+    \fi
+ }{}
