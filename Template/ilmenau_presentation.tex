@@ -1,0 +1,42 @@
+\documentclass[t]{beamer}
+
+% Packages
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+% Beamer theme
+\usecolortheme[RGB={0,114,197}]{structure} 
+\usetheme{Ilmenau}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{sections/subsections in toc}[circle]
+
+% Title 
+\title{Title}
+\subtitle{Subtitle}
+\author{Jonas Devlieghere}
+\institute{KU Leuven}
+\date{\today}
+
+% Add TOC
+\AtBeginSection[]
+{
+\begin{frame}
+ 	\frametitle{Table of Contents}
+	\begin{multicols}{2}
+	\tableofcontents[currentsection]
+	\end{multicols}
+\end{frame}
+}	
+
+\begin{document}
+
+% Title Frame
+\frame{\titlepage} 
+
+% Content
+\section{Section} 
+\begin{frame}{Frame Title} 
+\end{frame}
+
+\end{document}
