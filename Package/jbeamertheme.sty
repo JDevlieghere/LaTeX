@@ -36,7 +36,7 @@
 % Theme
 \usetheme{default}
 \beamertemplatenavigationsymbolsempty
-\setbeamertemplate{footline}[frame number]
+\setbeamercovered{transparent}
 
 % Colors
 \definecolor{fgcolor}{RGB}{241,241,241}
@@ -58,8 +58,6 @@
 
 \setbeamercolor{section in toc}{fg=fgcolor}
 \setbeamercolor{subsection in toc}{fg=fgcolor}
-\setbeamercolor{section in toc shaded}{fg=fgcolor2}
-\setbeamercolor{subsection in toc shaded}{fg=fgcolor2}
 \setbeamercolor{block title}{fg=subtitle}
 
 % Beamer Font
@@ -71,6 +69,7 @@
 \setbeamertemplate{itemize subitem}{{\textendash}}
 \setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
 \setbeamertemplate{subsection in toc}{\hspace{1.2em}{\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+\setbeamertemplate{footline}[frame number]
 
 % Table of Contents 
 \AtBeginSection[]
