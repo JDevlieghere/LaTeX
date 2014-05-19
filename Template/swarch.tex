@@ -1,0 +1,44 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[english]{babel}
+\usepackage{imakeidx}
+\usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{swarch}
+
+\begin{document}
+
+Reference an \elem{Element} or \data{DataType}.
+
+\element{Element}
+
+\begin{itemize}
+    \item \textbf{Description:} Responsibilities of the component.
+    \item \textbf{Super-component:} The direct super-component, if any.
+    \item \textbf{Sub-components:} the direct sub-components, if any.
+\end{itemize}
+
+\begin{interfaces}
+    \begin{interface}{Interface A}
+        \begin{method}{returntType1 operation1(ParamType param) throws SomeException}
+            \effect{Describe the effect of the operation}
+            \begin{exceptions}
+                \exception{SomeException}{SomeException Description}
+            \end{exceptions}
+        \end{method}
+        \begin{method}{void operation2(ParamType2 param)}
+            \effect{Describe the effect of the operation}
+            \noexc
+        \end{method}
+    \end{interface}
+\end{interfaces}
+
+\newpage
+\begin{itemize}
+    \datatype{DataType} Description of data type.
+\end{itemize}
+
+\newpage
+\printindex[elements]
+\printindex[datatypes]
+
+\end{document}
