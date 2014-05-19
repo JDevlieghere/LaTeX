@@ -1,0 +1,86 @@
+% jbeamertheme.s						      05-10-2014
+%-------------------------------------------------------------------------------
+%
+% Package as used for the report of the course on
+% Software Architecture (B-KUL-H09B5A)
+%
+% Author
+%	Jonas Devlieghere	<info@jonasdevlieghere.com>
+%
+% Repository
+%	https://github.com/JDevlieghere/LaTeX
+%
+% License
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2013 Jonas Devlieghere
+%
+%	Permission is hereby granted, free of charge, to any person obtaining
+%	a copy of this software and associated documentation files (the
+%	"Software"), to deal in the Software without restriction, including
+%	without limitation the rights to use, copy, modify, merge, publish,
+%	distribute, sublicense, and/or sell copies of the Software, and to
+%	permit persons to whom the Software is furnished to do so, subject to
+%	the following conditions:
+%
+%	The above copyright notice and this permission notice shall be
+%	included in all copies or substantial portions of the Software.
+%
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND %	NONINFRINGEMENT.
+%	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+%	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+%	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+%	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+\newcommand{\elem}[1]{%
+	\lowercase{\def\templabel{#1}}
+	\hyperref[elem:\templabel]{\texttt{#1}}
+	\index[elements]{#1}
+}
+
+\newcommand{\element}[1]{%
+	\lowercase{\def\templabel{#1}} \subsection{#1}\label{elem:\templabel} \index[elements]{#1|textbf}
+}
+
+\newenvironment{interfaces}
+{\subsubsection*{Interfaces}\begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{interface}[1]
+{\item #1 \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{method}[1]
+{\item \texttt{#1} \begin{itemize}}
+{\end{itemize}}
+
+\newcommand{\effect}[1]{%
+	\item Effect: #1
+}
+
+\newenvironment{exceptions}[0]
+{\item Exceptions: \begin{itemize}}
+{\end{itemize}}
+
+\newcommand{\exception}[2]{%
+	\item \texttt{#1}: #2
+}
+\newcommand{\noexc}{%
+	\item  Exceptions: None
+}
+
+\newcommand{\data}[1]{%
+	\lowercase{\def\templabel{#1}}
+	\hyperref[datatype:\templabel]{\texttt{#1}}
+	\index[datatypes]{#1}
+}
+
+\newcommand{\datatype}[1]{%
+	\lowercase{\def\templabel{#1}}%
+	\item \texttt{#1}\label{datatype:\templabel}
+	\index[datatypes]{#1|textbf}
+}
+
+\newcommand{\lskip}{\vspace{\baselineskip}}
