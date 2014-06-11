@@ -1,39 +1,46 @@
-% jbeamertheme.s						      05-10-2014
+% jbeamertheme.s                                                      05-10-2014
 %-------------------------------------------------------------------------------
 %
-% Beamer Theme 
+% Beamer Theme
 %
 % Author
-%	Jonas Devlieghere	<info@jonasdevlieghere.com>
-% 
+% Jonas Devlieghere <info@jonasdevlieghere.com>
+%
 % Repository
-%	https://github.com/JDevlieghere/LaTeX
+% https://github.com/JDevlieghere/LaTeX
 %
 % License
-%	The MIT License (MIT)
-%	
-%	Copyright (c) 2013 Jonas Devlieghere
-%	
-%	Permission is hereby granted, free of charge, to any person obtaining
-%	a copy of this software and associated documentation files (the
-%	"Software"), to deal in the Software without restriction, including
-%	without limitation the rights to use, copy, modify, merge, publish,
-%	distribute, sublicense, and/or sell copies of the Software, and to
-%	permit persons to whom the Software is furnished to do so, subject to
-%	the following conditions:
-%	
-%	The above copyright notice and this permission notice shall be
-%	included in all copies or substantial portions of the Software.
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-%	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-%	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND %	NONINFRINGEMENT.
-%	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-%	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-%	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-%	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.%
+% The MIT License (MIT)
+%
+% Copyright (c) 2013 Jonas Devlieghere
+%
+% Permission is hereby granted, free of charge, to any person obtaining
+% a copy of this software and associated documentation files (the
+% "Software"), to deal in the Software without restriction, including
+% without limitation the rights to use, copy, modify, merge, publish,
+% distribute, sublicense, and/or sell copies of the Software, and to
+% permit persons to whom the Software is furnished to do so, subject to
+% the following conditions:
+%
+% The above copyright notice and this permission notice shall be
+% included in all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND % NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.%
 
 \ProvidesPackage{jbeamertheme}[2014/10/05 JDevlieghere Beamer Theme]
+\RequirePackage{multicol}
+\RequirePackage{kvoptions}
+
+\DeclareStringOption[1]{tocols}
+\DeclareBoolOption{notoc}
+\DeclareBoolOption{frametitle}
+\ProcessKeyvalOptions*
 
 % Theme
 \usetheme{default}
@@ -76,35 +83,39 @@
 \setbeamertemplate{subsection in toc}{\hspace{1.2em}{\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
 \setbeamertemplate{footline}[frame number]
 
-% Table of Contents 
-\AtBeginSection[]
-{
-\begin{frame}
- 	\frametitle{Table of Contents}
- 	%\begin{multicols}{2}
-	\tableofcontents[currentsection]	
-	%\end{multicols}
-\end{frame}
-}
+\ifjbeamertheme@notoc\else
+  % Table of Contents
+  \AtBeginSection[]
+  {
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \begin{multicols*}{\jbeamertheme@tocols}
+    \tableofcontents[currentsection]
+    \end{multicols*}
+  \end{frame}
+  }
+\fi
 
-% Automatic Frame Titles
-% http://tex.stackexchange.com/questions/109816/automatic-frame-titles-subtitles-with-condition
-\CheckCommand*\beamer@checkframetitle{%
-  \@ifnextchar\bgroup\beamer@inlineframetitle{}}
-\renewcommand*\beamer@checkframetitle{%
-  \global\let\beamer@frametitle\relax\@ifnextchar%
-  \bgroup\beamer@inlineframetitle{}}
+\ifjbeamertheme@frametitle
+  % Automatic Frame Titles
+  % http://tex.stackexchange.com/questions/109816/automatic-frame-titles-subtitles-with-condition
+  \CheckCommand*\beamer@checkframetitle{%
+    \@ifnextchar\bgroup\beamer@inlineframetitle{}}
+  \renewcommand*\beamer@checkframetitle{%
+    \global\let\beamer@frametitle\relax\@ifnextchar%
+    \bgroup\beamer@inlineframetitle{}}
 
-\addtobeamertemplate{frametitle}{
-  \ifx\insertframetitle\empty
-    \ifx\insertframesubtitle\empty
-      \ifx\insertsubsection\empty 
-        \frametitle{\insertsectionhead}
+  \addtobeamertemplate{frametitle}{
+    \ifx\insertframetitle\empty
+      \ifx\insertframesubtitle\empty
+        \ifx\insertsubsection\empty
+          \frametitle{\insertsectionhead}
+        \else
+          \frametitle{\insertsubsectionhead}\framesubtitle{\insertsectionhead}
+        \fi
       \else
-        \frametitle{\insertsubsectionhead}\framesubtitle{\insertsectionhead}
-      \fi  
-    \else     
-    \fi  
-    \else
-    \fi
+      \fi
+      \else
+      \fi
  }{}
+\fi
