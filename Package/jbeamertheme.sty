@@ -56,9 +56,12 @@
 \setbeamercolor{subitem}{fg=fgcolor2}
 \setbeamercolor{itemize/enumerate subbody}{fg=fgcolor2}
 
-\setbeamercolor{section in toc}{fg=fgcolor}
+\setbeamercolor{section in toc}{fg=title}
 \setbeamercolor{subsection in toc}{fg=fgcolor}
 \setbeamercolor{block title}{fg=subtitle}
+
+\setbeamercolor{caption name}{fg=subtitle}
+
 
 % Beamer Font
 \setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
@@ -75,7 +78,7 @@
 \AtBeginSection[]
 {
 \begin{frame}
- 	\frametitle{Overzicht}
+ 	\frametitle{Table of Contents}
  	%\begin{multicols}{2}
 	\tableofcontents[currentsection]	
 	%\end{multicols}
