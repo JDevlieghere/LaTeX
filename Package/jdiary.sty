@@ -1,0 +1,39 @@
+\ProvidesPackage{jdiary}
+
+% Inspired by Paul Bradley's Journal
+% https://paulbradley.org/typesetting-journal-latex/
+
+\RequirePackage{framed}
+\RequirePackage{datetime}
+
+\newcommand{\datestyle}{}
+
+\DeclareOption{bf}{
+  \renewcommand{\datestyle}{\bfseries}
+}
+
+\DeclareOption{it}{
+  \renewcommand{\datestyle}{\itshape}
+}
+
+\DeclareOption{sc}{
+  \renewcommand{\datestyle}{\scshape}
+}
+
+\DeclareOption{bfsc}{
+  \renewcommand{\datestyle}{\bfseries \scshape}
+}
+
+\DeclareOption{bfit}{
+  \renewcommand{\datestyle}{\bfseries \itshape}
+}
+
+\ProcessOptions\relax
+
+\newdateformat{diarydate}{\dayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}, \monthname[\THEMONTH] \ordinaldate{\THEDAY}}
+
+\newenvironment{entry}[3]
+{\begin{leftbar} \noindent {\datestyle \diarydate\formatdate{#3}{#2}{#1} --}} %
+{\end{leftbar}}
+
+\endinput
