@@ -1,0 +1,22 @@
+\ProvidesPackage{jcv}
+\ProcessOptions\relax
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\sep}{\hspace{0.2em} $\cdot$ \hspace{0.2em}}
+
+\newcommand{\topline}{\noindent\rule{\linewidth}{0.5pt}}
+\newcommand{\botline}{\noindent\rule[0.6em]{\linewidth}{0.5pt}}
+\newcommand{\sect}[1]{\topline \\ \normalfont{\uppercase{\textbf{#1}}} \\ \botline}
+
+\newenvironment{ressection}[1]{\sect{#1}\nopagebreak\vspace{-0.5em}}{\vspace{1em}}
+
+\newenvironment{resitemize}{%
+	\let\olditem\item%
+	\renewcommand\item[4][]{\olditem \textbf{##1}, \textit{##2} \hfill ##3
+	\\[0.3\baselineskip]##4}%
+	\renewcommand{\labelitemi}{}
+	\begin{itemize} \setlength{\itemindent}{-2.5em}}{\end{itemize}%
+}
+
+\endinput
